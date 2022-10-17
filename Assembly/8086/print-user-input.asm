@@ -1,11 +1,11 @@
 ; this program reads an input from a user and prints it as it is 
 
 org 100h   
-	
+    
 call read_string
 call print_string
-ret	
-	
+ret    
+    
 
 read_string:
     ; initialize buffer with up to 100 characters  

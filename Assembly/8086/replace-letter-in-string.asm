@@ -37,12 +37,12 @@ print_message_prompt:
 
 print_original_letter_prompt:
     ; set cursor position on next line
-	mov dh, 2
-	mov dl, 0
-	mov bh, 0
-	mov ah, 2
-	int 10h 
-	
+    mov dh, 2
+    mov dl, 0
+    mov bh, 0
+    mov ah, 2
+    int 10h 
+    
     ; set bp to point to the beginning of the message to be printed (first two bytes contain message max length and actual length)
     mov si, offset read_original_letter_prompt
     call print_chars
@@ -50,12 +50,12 @@ print_original_letter_prompt:
 
 print_new_letter_prompt:
     ; set cursor position on next line
-	mov dh, 4
-	mov dl, 0
-	mov bh, 0
-	mov ah, 2
-	int 10h 
-	
+    mov dh, 4
+    mov dl, 0
+    mov bh, 0
+    mov ah, 2
+    int 10h 
+    
     ; set bp to point to the beginning of the message to be printed (first two bytes contain message max length and actual length)
     mov si, offset read_new_letter_prompt
     call print_chars
@@ -72,49 +72,49 @@ print_chars:
 
 read_original_letter:
     ; set cursor position on next line
-	mov dh, 3
-	mov dl, 0
-	mov bh, 0
-	mov ah, 2
-	int 10h
-	   
+    mov dh, 3
+    mov dl, 0
+    mov bh, 0
+    mov ah, 2
+    int 10h
+       
     ; read single letter
     mov ah, 1
-	int 21h 
-	
-	; write read letter into new_letter
-	mov bx, offset original_letter
-	mov [bx], al
-	
-	ret
-	
+    int 21h 
+    
+    ; write read letter into new_letter
+    mov bx, offset original_letter
+    mov [bx], al
+    
+    ret
+    
 read_new_letter:
     ; set cursor position on next line
-	mov dh, 5
-	mov dl, 0
-	mov bh, 0
-	mov ah, 2
-	int 10h
-	   
+    mov dh, 5
+    mov dl, 0
+    mov bh, 0
+    mov ah, 2
+    int 10h
+       
     ; read single letter
     mov ah, 1
-	int 21h 
-	
-	; write read letter into new_letter
-	mov bx, offset new_letter
-	mov [bx], al
-	
-	ret
+    int 21h 
+    
+    ; write read letter into new_letter
+    mov bx, offset new_letter
+    mov [bx], al
+    
+    ret
     
 read_message: 
     ; set cursor position on next line
-	mov dh, 1
-	mov dl, 0
-	mov bh, 0
-	mov ah, 2
-	int 10h
-	
-	; read message
+    mov dh, 1
+    mov dl, 0
+    mov bh, 0
+    mov ah, 2
+    int 10h
+    
+    ; read message
     mov dx, offset message_buffer
     mov ah, 0ah
     int 21h
