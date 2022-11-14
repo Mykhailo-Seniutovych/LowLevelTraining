@@ -9,6 +9,8 @@
 void applyFilter(FILE *file, int imageWidth, int imageHeight, ColorFilter filterColor);
 int getColorIndex(ColorFilter filterColor);
 
+// Example how to run the program: "./bin/app.exe -f img/tree.bmp -c red"
+
 int main(int argc, const char **argv) {
     CmdParams params = parseCmdParams(argc, argv);
 
@@ -55,6 +57,7 @@ void applyFilter(FILE *file, int imageWidth, int imageHeight, ColorFilter filter
             pixel[colorIndex] = (unsigned char)colorValue;
             fseek(file, -bytesRead, SEEK_CUR);
 
+            // TODO: probably very inefficient way to write three bytes chunks, need to implement some buffer and write larger values at once
             fwrite(&pixel, 1, 3, file);
             fflush(file);
         }
