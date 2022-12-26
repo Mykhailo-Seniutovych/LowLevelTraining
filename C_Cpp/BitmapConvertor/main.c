@@ -51,7 +51,7 @@ void applyFilter(FILE *file, int imageWidth, int imageHeight, ColorFilter filter
                 puts("Error when reading data from the file.");
                 exit(1);
             }
-
+            int cursor = ftell(file);
             int colorValue = (int)pixel[colorIndex] + 50;
             colorValue = colorValue <= 255 ? colorValue : 255;
             pixel[colorIndex] = (unsigned char)colorValue;
